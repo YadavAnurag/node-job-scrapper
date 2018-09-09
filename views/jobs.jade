@@ -1,0 +1,22 @@
+extends joblayout
+
+block content
+  .container-fluid.mt-5.mb-3
+  if sorry
+    h2.text-center= sorry
+  else if message
+    h2.text-center= message 
+  else
+    .card-columns
+      each val in jobs
+        .card.m-2
+          .card-header.text-white(style='background-color: indigo') #{val.title} 
+          .card-body
+            h5.card-title #{val.company}
+            p.card-text #{val.summary}
+          .card-footer.text-white(style="background-color: indigo")
+            blockquote.blockquote.mb-0
+              footer.blockquote-footer
+                  cite(title="Read more about #{val.company}s #{val.title} job") 
+                    a(href="#{val.url}").d-inline.text-white Read More
+        
